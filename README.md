@@ -1,4 +1,4 @@
-# chen-element
+# plum-element
 
 [![Build Status](https://github.com/mgenware/plum-element/workflows/Build/badge.svg)](https://github.com/mgenware/plum-element/actions)
 [![npm version](https://img.shields.io/npm/v/plum-element.svg?style=flat-square)](https://npmjs.com/package/plum-element)
