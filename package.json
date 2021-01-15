@@ -1,7 +1,7 @@
 {
   "name": "plum-element",
   "version": "0.0.0",
-  "description": "A tiny base class for web components to sync between properties to attributes  ",
+  "description": "A tiny base class for web components to sync between properties and attributes  ",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
   "author": "Mgenware (https://github.com/mgenware)",

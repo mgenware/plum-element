@@ -3,7 +3,7 @@
 import { html, fixture, expect } from '@open-wc/testing';
 import { PlumElement, PlumProps } from '..';
 
-it('Sync from props to attrs', async () => {
+it('Basic syncing between props n attrs', async () => {
   class TElement extends PlumElement {
     static get plProps(): PlumProps {
       return {
@@ -37,4 +37,7 @@ it('Sync from props to attrs', async () => {
   el.b = 17;
   expect(el.getAttribute('a')).to.eq('mgenware');
   expect(el.getAttribute('b')).to.eq('17');
+
+  el.setAttribute('a', 'hi');
+  expect(el.a).to.eq('hi');
 });
