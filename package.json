@@ -1,0 +1,51 @@
+{
+  "name": "plum-element",
+  "version": "0.0.0",
+  "description": "A tiny base class for web components to sync between properties to attributes  ",
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "author": "Mgenware (https://github.com/mgenware)",
+  "homepage": "https://github.com/mgenware/plum-element",
+  "bugs": "https://github.com/mgenware/plum-element/issues",
+  "keywords": [
+    "web components"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mgenware/plum-element.git"
+  },
+  "license": "MIT",
+  "scripts": {
+    "r": "daizong",
+    "test": "daizong build"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.ts",
+    "dist/**/*.html",
+    "dist/**/*.css",
+    "dist/**/*.map"
+  ],
+  "devDependencies": {
+    "@open-wc/testing": "^2.5.32",
+    "@types/mocha": "^8.2.0",
+    "@types/node": "^14.14.21",
+    "@typescript-eslint/eslint-plugin": "^4.13.0",
+    "@typescript-eslint/parser": "^4.13.0",
+    "@web/dev-server": "^0.1.4",
+    "@web/test-runner": "^0.12.2",
+    "daizong": "^0.12.2",
+    "eslint": "^7.17.0",
+    "eslint-config-airbnb-typescript-lite": "^12.0.0",
+    "eslint-config-mgenware": "^0.0.5",
+    "eslint-plugin-import": "^2.22.1",
+    "mgenware-tsconfig-wc": "^1.0.0",
+    "mocha": "^8.2.1",
+    "source-map-support": "^0.5.19",
+    "tslib": "^2.1.0",
+    "typescript": "^4.1.3"
+  }
+}

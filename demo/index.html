@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      html {
+        box-sizing: border-box;
+      }
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+      plum-element {
+        border: 1px solid gray;
+        width: 200px;
+        height: 200px;
+      }
+      div {
+        background-color: #fecd21;
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Default:
+    <plum-element>
+      <div>plum-element</div>
+    </plum-element> -->
+    T:
+    <plum-element t>
+      <div>plum-element</div>
+    </plum-element>
+    B:
+    <!-- <plum-element b>
+      <div>plum-element</div>
+    </plum-element>
+    <plum-element l>
+      <div>plum-element</div>
+    </plum-element>
+    <plum-element r>
+      <div>plum-element</div>
+    </plum-element>
+    Dynamically add or remove an attribute: <button onclick="handleAddClick()">Add</button>
+    <button onclick="handleRemoveClick()">Remove</button>
+    <plum-element id="box1">
+      <div>plum-element</div>
+    </plum-element> -->
+    <script type="module" src="../dist/main.js"></script>
+    <script>
+      const box1 = document.getElementById('box1');
+
+      function handleAddClick() {
+        box1.setAttribute('t', '');
+      }
+
+      function handleRemoveClick() {
+        box1.removeAttribute('t');
+      }
+    </script>
+  </body>
+</html>
