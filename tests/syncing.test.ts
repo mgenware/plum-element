@@ -66,11 +66,11 @@ it('onPLPropUpdated and onPLAttrUpdated', async () => {
       };
     }
 
-    get a(): unknown {
+    get a(): string {
       return this.getPLProp('a');
     }
 
-    set a(v: unknown) {
+    set a(v: string) {
       this.setPLProp('a', v);
     }
 
@@ -134,4 +134,20 @@ it('onPLPropUpdated and onPLAttrUpdated', async () => {
   expect(el.attrCount).to.eq(2);
 
   expect(el.a).to.eq('changed');
+
+  // Remove an attr.
+  el.removeAttribute('a');
+  expect(el.attrToPropUpdate).to.eq(true);
+  expect(el.pName).to.eq('a');
+  expect(el.pOld).to.eq('changed');
+  expect(el.pNew).to.eq(undefined);
+
+  expect(el.aName).to.eq('a');
+  expect(el.aOld).to.eq('changed');
+  expect(el.aNew).to.eq(null);
+
+  expect(el.propCount).to.eq(3);
+  expect(el.attrCount).to.eq(3);
+
+  expect(el.a).to.eq(undefined);
 });

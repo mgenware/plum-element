@@ -22,8 +22,8 @@ export class PlumElement extends HTMLElement {
   protected plPropValues: Record<string, unknown> = {};
 
   // Gets the value of a specified pl-prop.
-  protected getPLProp(prop: string): unknown {
-    return this.plPropValues[prop];
+  protected getPLProp<T>(prop: string): T {
+    return this.plPropValues[prop] as T;
   }
 
   // Only called by `setPLProp` to set or remove the specified attribute.
