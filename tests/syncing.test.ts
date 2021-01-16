@@ -151,3 +151,53 @@ it('onPLPropUpdated and onPLAttrUpdated', async () => {
 
   expect(el.a).to.eq(undefined);
 });
+
+it('Initial attributes', async () => {
+  class TElement extends PlumElement {
+    propCount = 0;
+    attrCount = 0;
+    pName = '';
+    pOld: unknown;
+    pNew: unknown;
+    attrToPropUpdate = false;
+
+    static get plProps(): PlumPropDefs {
+      return {
+        a: 's',
+      };
+    }
+
+    get a(): string {
+      return this.getPLProp('a');
+    }
+
+    protected onPLPropUpdated(
+      name: string,
+      oldValue: unknown,
+      newValue: unknown,
+      attrToPropUpdate: boolean,
+    ) {
+      this.propCount++;
+      this.pName = name;
+      this.pOld = oldValue;
+      this.pNew = newValue;
+      this.attrToPropUpdate = attrToPropUpdate;
+    }
+
+    protected onPLAttributeUpdated() {
+      this.attrCount++;
+    }
+  }
+  customElements.define('t-initial-attrs', TElement);
+  const el: TElement = await fixture(html`<t-initial-attrs a="hi"></t-initial-attrs>`);
+
+  expect(el.attrToPropUpdate).to.eq(true);
+  expect(el.a).to.eq('hi');
+
+  expect(el.pName).to.eq('a');
+  expect(el.pOld).to.eq(undefined);
+  expect(el.pNew).to.eq('hi');
+
+  expect(el.propCount).to.eq(1);
+  expect(el.attrCount).to.eq(1);
+});
