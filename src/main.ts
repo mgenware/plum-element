@@ -2,14 +2,8 @@
 export type PlumPropType = 's' | 'n' | 'b' | 'a' | 'o';
 export type PlumPropDefs = Record<string, PlumPropType>;
 
-/**
- * Main type of plum-element.
- *
- * Some terms used in this file:
- * `pl-prop`: a property defined in a `PlumElement`.
- */
 export class PlumElement extends HTMLElement {
-  // Returns a map of pl-props to monitor for changes.
+  // Returns a map of properties to monitor for changes.
   static get plProps(): PlumPropDefs {
     return {};
   }
@@ -18,10 +12,10 @@ export class PlumElement extends HTMLElement {
     return Object.keys(this.plProps);
   }
 
-  // Stores all pl-props in a map.
+  // Stores all properties in a map.
   protected plPropValues: Record<string, unknown> = {};
 
-  // Gets the value of a specified pl-prop.
+  // Gets the value of a specified property.
   protected getPLProp<T>(prop: string): T {
     return this.plPropValues[prop] as T;
   }
@@ -44,11 +38,11 @@ export class PlumElement extends HTMLElement {
     return propType;
   }
 
-  // Sets the value of a specified pl-prop.
+  // Sets the value of a specified property.
   protected setPLProp(
     name: string,
     value: unknown,
-    // Determines if this pl-prop change is triggered by an attribute change.
+    // Determines if this property change is triggered by an attribute change.
     attrInfo?: {
       oldValue: string | null;
       newValue: string | null;
@@ -79,8 +73,8 @@ export class PlumElement extends HTMLElement {
     this.setPLProp(name, propValue, { oldValue, newValue });
   }
 
-  // Called when a pl-prop is updated.
-  // `attrToPropUpdate` true if this pl-prop change is triggered by an attribute change.
+  // Called when a property is updated.
+  // `attrToPropUpdate` true if this is triggered by an attribute change.
   protected onPLPropUpdated(
     _name: string,
     _oldValue: unknown,
@@ -88,8 +82,8 @@ export class PlumElement extends HTMLElement {
     _attrToPropUpdate: boolean,
   ) {}
 
-  // Called when an attribute is updated in response to a pl-prop update.
-  // `attrToPropUpdate` true if this pl-prop change is triggered by an attribute change.
+  // Called when an attribute is updated.
+  // `attrToPropUpdate` true if this is triggered by an attribute change.
   protected onPLAttributeUpdated(
     _name: string,
     _oldValue: string | null,
@@ -97,6 +91,7 @@ export class PlumElement extends HTMLElement {
     _attrToPropUpdate: boolean,
   ) {}
 
+  // Called when an attribute value is converted to a property value.
   protected plAttributeToProp(value: string | null, type: PlumPropType): unknown {
     switch (type) {
       case 's':
@@ -117,6 +112,7 @@ export class PlumElement extends HTMLElement {
     }
   }
 
+  // Called when a property value is converted to an attribute value.
   protected plPropToAttribute(value: unknown, type: PlumPropType): string | null {
     if (value === null || value === undefined) {
       return null;
