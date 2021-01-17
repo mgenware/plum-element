@@ -4,7 +4,7 @@
 [![npm version](https://img.shields.io/npm/v/plum-element.svg?style=flat-square)](https://npmjs.com/package/plum-element)
 [![Node.js Version](http://img.shields.io/node/v/plum-element.svg?style=flat-square)](https://nodejs.org/en/)
 
-A tiny base class for web components to sync between properties and attributes. No dependencies, less than 1KB gzipped.
+A tiny base class for web components to sync between properties and attributes. ⚡️ No dependencies, less than 1KB gzipped.
 
 ## Installation
 
@@ -26,7 +26,7 @@ class ToDoElement extends PlumElement {
     };
   }
 
-  // Description getter and setter.
+  // Description property getter and setter.
   get description(): string {
     return this.getPLProp('description');
   }
@@ -34,7 +34,7 @@ class ToDoElement extends PlumElement {
     this.setPLProp('description', val);
   }
 
-  // Completed getter and setter.
+  // Completed property getter and setter.
   get completed(): boolean {
     return this.getPLProp('completed');
   }
@@ -71,11 +71,11 @@ PlumElement properties and attributes are automatically in sync:
 
 - `s` string.
 - `n` number.
-- `b` boolean. `false` removes attribute.
+- `b` boolean. `false` removes the attribute.
 - `a` array. JSON is used for serialization / deserialization.
 - `object` object. JSON is used for serialization / deserialization.
 
-NOTE: `null` or `undefined` property values always removes attribute value.
+NOTE: `null` or `undefined` property values always remove the attribute.
 
 ### Property / attribute change callback
 
@@ -98,7 +98,7 @@ class MyElement extends PlumElement {
 }
 ```
 
-Just like the standard `attributeChangedCallback`, these two functions are also called before an element is connected, use `HTMLElement.isConnected` if you are only interested in changes when an element is connected:
+Just like the standard `attributeChangedCallback`, these two functions are also called before an element is connected, use `HTMLElement.isConnected` if you are only interested in changes when an element is connected. Example:
 
 ```ts
 class MyElement extends PlumElement {
