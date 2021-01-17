@@ -164,11 +164,16 @@ it('Initial attributes', async () => {
     static get plProps(): PlumPropDefs {
       return {
         a: 's',
+        b: 's',
       };
     }
 
     get a(): string {
       return this.getPLProp('a');
+    }
+
+    get b(): string {
+      return this.getPLProp('b');
     }
 
     protected onPLPropUpdated(
@@ -189,15 +194,83 @@ it('Initial attributes', async () => {
     }
   }
   customElements.define('t-initial-attrs', TElement);
-  const el: TElement = await fixture(html`<t-initial-attrs a="hi"></t-initial-attrs>`);
+  const el: TElement = await fixture(html`<t-initial-attrs a="hi" b="oh"></t-initial-attrs>`);
 
   expect(el.attrToPropUpdate).to.eq(true);
   expect(el.a).to.eq('hi');
+  expect(el.b).to.eq('oh');
 
-  expect(el.pName).to.eq('a');
+  expect(el.pName).to.eq('b');
   expect(el.pOld).to.eq(undefined);
-  expect(el.pNew).to.eq('hi');
+  expect(el.pNew).to.eq('oh');
 
+  expect(el.propCount).to.eq(2);
+  expect(el.attrCount).to.eq(2);
+});
+
+it('isConnected', async () => {
+  class TElement extends PlumElement {
+    propCount = 0;
+    attrCount = 0;
+    pName = '';
+    pOld: unknown;
+    pNew: unknown;
+    attrToPropUpdate = false;
+
+    static get plProps(): PlumPropDefs {
+      return {
+        a: 's',
+        b: 's',
+      };
+    }
+
+    get a(): string {
+      return this.getPLProp('a');
+    }
+
+    get b(): string {
+      return this.getPLProp('b');
+    }
+
+    protected onPLPropUpdated(
+      name: string,
+      oldValue: unknown,
+      newValue: unknown,
+      attrToPropUpdate: boolean,
+    ) {
+      if (!this.isConnected) {
+        return;
+      }
+      this.propCount++;
+      this.pName = name;
+      this.pOld = oldValue;
+      this.pNew = newValue;
+      this.attrToPropUpdate = attrToPropUpdate;
+    }
+
+    protected onPLAttributeUpdated() {
+      if (!this.isConnected) {
+        return;
+      }
+      this.attrCount++;
+    }
+  }
+  customElements.define('t-is-connected', TElement);
+  const el: TElement = await fixture(html`<t-is-connected a="hi" b="oh"></t-is-connected>`);
+
+  expect(el.attrToPropUpdate).to.eq(false);
+  expect(el.a).to.eq('hi');
+  expect(el.b).to.eq('oh');
+
+  expect(el.pName).to.eq('');
+  expect(el.pOld).to.eq(undefined);
+  expect(el.pNew).to.eq(undefined);
+
+  expect(el.propCount).to.eq(0);
+  expect(el.attrCount).to.eq(0);
+
+  el.setAttribute('a', 'changed');
+  expect(el.a).to.eq('changed');
   expect(el.propCount).to.eq(1);
   expect(el.attrCount).to.eq(1);
 });

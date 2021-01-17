@@ -82,14 +82,10 @@ NOTE: `null` or `undefined` property values always removes attribute value.
 Whenever a property or attribute changes, these two functions are always called in pairs.
 
 ```ts
+class MyElement extends PlumElement {
   // Called when a property is updated.
   // `attrToPropUpdate` true if this is triggered by an attribute change.
-  onPLPropUpdated(
-    name: string,
-    oldValue: unknown,
-    newValue: unknown,
-    attrToPropUpdate: boolean,
-  ) {}
+  onPLPropUpdated(name: string, oldValue: unknown, newValue: unknown, attrToPropUpdate: boolean) {}
 
   // Called when an attribute is updated.
   // `attrToPropUpdate` true if this is triggered by an attribute change.
@@ -99,4 +95,23 @@ Whenever a property or attribute changes, these two functions are always called 
     newValue: string | null,
     attrToPropUpdate: boolean,
   ) {}
+}
+```
+
+Just like the standard `attributeChangedCallback`, these two functions are also called before an element is connected, use `HTMLElement.isConnected` if you are only interested in changes when an element is connected:
+
+```ts
+class MyElement extends PlumElement {
+  connectedCallback() {
+    // Handle property values all at once in `connectedCallback`.
+  }
+
+  onPLPropUpdated(name: string, oldValue: unknown, newValue: unknown, attrToPropUpdate: boolean) {
+    // Ignore property changes when the element is not connected.
+    if (!this.isConnected) {
+      return;
+    }
+    // Handle property changes.
+  }
+}
 ```
