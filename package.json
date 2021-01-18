@@ -42,10 +42,9 @@
     "eslint-config-airbnb-typescript-lite": "^12.0.0",
     "eslint-config-mgenware": "^0.0.5",
     "eslint-plugin-import": "^2.22.1",
-    "mgenware-tsconfig-wc": "^1.0.0",
+    "mgenware-tsconfig-wc": "^1.1.0",
     "mocha": "^8.2.1",
     "source-map-support": "^0.5.19",
-    "tslib": "^2.1.0",
     "typescript": "^4.1.3"
   }
 }
