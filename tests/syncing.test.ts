@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable import/no-duplicates */
 import { html, fixture, expect } from '@open-wc/testing';
@@ -238,6 +239,7 @@ it('isConnected', async () => {
       newValue: unknown,
       attrToPropUpdate: boolean,
     ) {
+      // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
       if (!this.isConnected) {
         return;
       }
@@ -249,6 +251,7 @@ it('isConnected', async () => {
     }
 
     protected onPLAttributeUpdated() {
+      // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
       if (!this.isConnected) {
         return;
       }

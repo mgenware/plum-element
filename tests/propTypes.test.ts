@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable import/no-duplicates */
+/* eslint-disable import/extensions */
 import { html, fixture, expect } from '@open-wc/testing';
 import { PlumElement, PlumPropDefs } from '..';
 
