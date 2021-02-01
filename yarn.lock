@@ -2561,10 +2561,10 @@ mgenware-tsconfig-node@^14.0.1:
   dependencies:
     "@tsconfig/node14" "^1.0.0"
 
-mgenware-tsconfig-wc@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/mgenware-tsconfig-wc/-/mgenware-tsconfig-wc-2.0.1.tgz#8ce9343ec8c23b9bea221eeaa88ccbfb9e22dfc6"
-  integrity sha512-cZ5W//1JxJzaUsY93WITQxWio1Vl/AG4DLuBM0xx8JjSq5VqmvYM1yBogBSpISUVpQMwQi+p75Eo5biBqzlSOQ==
+mgenware-tsconfig-wc@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/mgenware-tsconfig-wc/-/mgenware-tsconfig-wc-2.0.2.tgz#e9cf2f6fb169f332bc3c9291aa76e5bde01def70"
+  integrity sha512-+FOML6I7bD7Zp+ruyB1QWT6rW0O5ZN516nCQvCk8SHoR6VaVJXSQqbg5GJDTYuR1tI6oWzRzohowjOPCmrX+hg==
   dependencies:
     mgenware-tsconfig-node "^14.0.1"
 
