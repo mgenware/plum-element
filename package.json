@@ -1,6 +1,6 @@
 {
   "name": "plum-element",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "A tiny base class for web components to sync between properties and attributes",
   "type": "module",
   "exports": "./dist/main.js",
