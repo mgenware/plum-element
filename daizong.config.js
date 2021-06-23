@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   // Starts development mode, which watches and compiles all source files including tests.
   dev: {
     run: ['#clean', 'tsc -b tests -w'],
