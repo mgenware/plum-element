@@ -22,5 +22,5 @@ jobs:
         with:
           node-version: ${{ matrix.node_version }}
           architecture: ${{ matrix.architecture }}
-      - run: yarn
-      - run: yarn r build
+      - run: npm i
+      - run: npm test
